@@ -9,8 +9,8 @@ export class ModalDialogService {
    * @param componentFactoryResolver
    * @param modalDialogInstanceService
    */
-  constructor(@Inject(ComponentFactoryResolver) private componentFactoryResolver: ComponentFactoryResolver,
-              @Inject(ModalDialogInstanceService) private modalDialogInstanceService: ModalDialogInstanceService) {
+  constructor( @Inject(ComponentFactoryResolver) private componentFactoryResolver: ComponentFactoryResolver,
+    @Inject(ModalDialogInstanceService) private modalDialogInstanceService: ModalDialogInstanceService) {
   }
 
   /**
@@ -26,5 +26,12 @@ export class ModalDialogService {
     componentRef.instance.dialogInit(componentRef, dialogOptions);
 
     this.modalDialogInstanceService.saveExistingModalDialog(componentRef);
+  }
+
+  /**
+   * Close all dialogs
+   */
+  closeAll() {
+    this.modalDialogInstanceService.closeAnyExistingModalDialog();
   }
 }
